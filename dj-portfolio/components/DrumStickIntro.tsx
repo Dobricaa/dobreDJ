@@ -11,14 +11,17 @@ const STICK_ENTRY_DURATION = 0.6;
 const STICK_STRIKE_DOWN_DURATION = 0.06;
 const STICK_STRIKE_UP_DURATION = 0.25;
 const STICK_EXIT_DURATION = 0.5;
-const SCROLL_FRACTION = 0.36;
+const SCROLL_FRACTION = 0.32;
 const STICK_BASE_ROTATION = -52;
 const STICK_STRIKE_ROTATION = -5;
 const STICK_STRIKE_Y = 180;
 /** Fraction of viewport width: stick rests this far to the left (e.g. 0.25 = 25% from right edge). Increase to move stick more left. */
 const STICK_REST_X_FRACTION = 0.25;
 const STICK_REST_Y = -280;
+const STICK_REST_Y_MOBILE = -100;
 const SIZE_MULTIPLIER = 5;
+const SIZE_MULTIPLIER_MOBILE = 3;
+const MOBILE_BREAKPOINT = 640;
 
 let introHasRun = false;
 
@@ -30,6 +33,7 @@ export default function DrumStickIntro() {
   const strikeTimeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const stickControls = useAnimationControls();
   const shakeControls = useAnimationControls();
+  const [isMobile, setIsMobile] = useState(false);
 
   const cancelIntro = useCallback(() => {
     setPhase("cancelled");
@@ -42,6 +46,14 @@ export default function DrumStickIntro() {
   }, []);
 
   useIntroScrollGuard(phase === "countdown", cancelIntro);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const checkMobile = () => setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -73,10 +85,11 @@ export default function DrumStickIntro() {
 
     const runSequence = async () => {
       const restX = -window.innerWidth * STICK_REST_X_FRACTION;
+      const restY = window.innerWidth < MOBILE_BREAKPOINT ? STICK_REST_Y_MOBILE : STICK_REST_Y;
       try {
         await stickControls.start({
           x: 300,
-          y: STICK_REST_Y,
+          y: restY,
           rotate: STICK_BASE_ROTATION,
           transition: { duration: 0 },
         });
@@ -84,7 +97,7 @@ export default function DrumStickIntro() {
         if (cancelled) return;
         await stickControls.start({
           x: restX,
-          y: STICK_REST_Y,
+          y: restY,
           rotate: STICK_BASE_ROTATION,
           transition: {
             duration: STICK_ENTRY_DURATION,
@@ -96,7 +109,7 @@ export default function DrumStickIntro() {
           if (cancelled) return;
           await stickControls.start({
             x: restX,
-            y: STICK_REST_Y + STICK_STRIKE_Y,
+            y: restY + STICK_STRIKE_Y,
             rotate: STICK_BASE_ROTATION + STICK_STRIKE_ROTATION,
             transition: {
               duration: STICK_STRIKE_DOWN_DURATION,
@@ -113,7 +126,7 @@ export default function DrumStickIntro() {
           shakeControls.set({ x: 0 });
           await stickControls.start({
             x: restX,
-            y: STICK_REST_Y,
+            y: restY,
             rotate: STICK_BASE_ROTATION,
             transition: {
               duration: STICK_STRIKE_UP_DURATION,
@@ -160,8 +173,9 @@ export default function DrumStickIntro() {
     return null;
   }
 
-  const stickWidth = 48 * SIZE_MULTIPLIER;
-  const stickHeight = 128 * SIZE_MULTIPLIER;
+  const multiplier = isMobile ? SIZE_MULTIPLIER_MOBILE : SIZE_MULTIPLIER;
+  const stickWidth = 48 * multiplier;
+  const stickHeight = 128 * multiplier;
 
   return (
     <AnimatePresence mode="wait">

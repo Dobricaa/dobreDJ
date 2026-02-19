@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 sm:py-28 px-6 bg-dark-900"
+      className="py-16 sm:py-28 px-4 sm:px-6 bg-dark-900"
       aria-labelledby="contact-heading"
     >
       <div className="max-w-xl mx-auto">

@@ -5,7 +5,7 @@ export default function Hero() {
     <>
       <DrumStickIntro />
       <section
-      className="relative min-h-[105vh] flex flex-col items-center justify-center px-6 text-center overflow-hidden"
+      className="relative min-h-[100vh] min-h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-6 py-6 text-center overflow-hidden safe-area-padding"
       aria-label="Hero"
     >
       {/* Full-bleed background image: left to right, behind all content */}
@@ -40,19 +40,19 @@ export default function Hero() {
           DJ & LIVE PERCUSSIONIST
         </p> */}
         <div
-          className="mt-16 sm:mt-20 flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in-up"
+          className="mt-12 sm:mt-20 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center opacity-0 animate-fade-in-up"
           style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
         >
           <a
             href="#contact"
-            className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark-950 transition-all hover:opacity-90"
+            className="inline-flex items-center justify-center min-h-[48px] px-6 sm:px-8 py-4 text-base font-semibold text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark-950 transition-all hover:opacity-90 active:opacity-90 touch-manipulation"
             style={{ backgroundColor: "rgb(0,173,166)" }}
           >
             Book Now
           </a>
           <a
             href="#latest-mix"
-            className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark-950"
+            className="inline-flex items-center justify-center min-h-[48px] px-6 sm:px-8 py-4 text-base font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark-950 touch-manipulation"
           >
             Listen Now
           </a>
