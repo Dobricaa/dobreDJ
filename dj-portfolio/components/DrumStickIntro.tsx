@@ -187,7 +187,7 @@ export default function DrumStickIntro() {
             transition={{ duration: 0.3 }}
           >
             <img
-              src="/images/IMG4.png"
+              src="/images/img4.png"
               alt=""
               className="w-full h-full object-contain select-none"
               aria-hidden

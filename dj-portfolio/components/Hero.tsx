@@ -11,7 +11,7 @@ export default function Hero() {
       {/* Full-bleed background image: left to right, behind all content */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/IMG2.png')" }}
+        style={{ backgroundImage: "url('/images/img2.png')" }}
         aria-hidden
       />
       {/* Dark overlay so text and buttons stay readable */}
