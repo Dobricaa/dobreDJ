@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const siteUrl = "https://dj-yourname.com";
+const siteUrl = "https://dobredj.vercel.app";
 
 export const metadata: Metadata = {
-  title: "DJ YOURNAME | Afro / Tech House / Festival Energy",
+  title: "DŌBRE | DJ & Live Percussionist | Afro-Latin House",
   description:
-    "Professional DJ and producer. Afro House, Tech House, Festival Energy. Book for events and listen to latest mixes.",
-  keywords: ["DJ", "Afro House", "Tech House", "Festival", "Electronic Music"],
-  authors: [{ name: "DJ YOURNAME" }],
+    "DŌBRE is a Romania-based DJ and percussionist specializing in high-energy Afro-Latin house. Rhythm is king—non-stop dancing.",
+  keywords: ["DJ", "Live Percussion", "Afro-Latin", "House", "DŌBRE", "Romania"],
+  authors: [{ name: "DŌBRE" }],
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "DJ YOURNAME | Afro / Tech House / Festival Energy",
+    title: "DŌBRE | DJ & Live Percussionist | Afro-Latin House",
     description:
-      "Professional DJ and producer. Afro House, Tech House, Festival Energy.",
-    siteName: "DJ YOURNAME",
+      "DŌBRE is a Romania-based DJ and percussionist specializing in high-energy Afro-Latin house. Rhythm is king—non-stop dancing.",
+    siteName: "DŌBRE",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DJ YOURNAME | Afro / Tech House / Festival Energy",
-    description: "Professional DJ and producer. Afro House, Tech House, Festival Energy.",
+    title: "DŌBRE | DJ & Live Percussionist | Afro-Latin House",
+    description: "DŌBRE is a Romania-based DJ and percussionist specializing in high-energy Afro-Latin house. Rhythm is king—non-stop dancing.",
   },
   robots: "index, follow",
   icons: {
